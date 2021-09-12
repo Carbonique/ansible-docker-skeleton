@@ -1,0 +1,16 @@
+# Basedir to use for mounting 
+docker_basedir:
+
+# SUI config
+app:
+- name: "{{ role_name }}" # name of app to add to SUI
+  url:  "{{ role_name }}.{{ domain_name }}" # url of app to add to SUI
+  icon: # material design icon to add to SUI
+
+add_to_pihole: 
+add_to_swag: 
+add_to_sui: 
+
+# Whether to deploy apps as subfolder or subdomain. Leave empty or set to False for subdomain. 
+# Set to true for subfolder
+subfolder:

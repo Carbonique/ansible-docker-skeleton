@@ -1,0 +1,14 @@
+- name: "Test if {{ role_name }} config is already added to local custom.list"
+  become: false
+  local_action: ansible.builtin.shell grep -c  "^{{ inventory_hostname }} {{ role_name }}.{{ domain_name }}" "{{ playbook_dir }}/custom.list" || true
+  register: test_grep
+
+- name: "Add {{ role_name }} to local custom.list"
+  become: false
+  local_action:
+    module: ansible.builtin.lineinfile
+    dest: "{{ playbook_dir }}/custom.list"
+    line: "{{ inventory_hostname }} {{ role_name }}.{{ domain_name }}"
+  when: 
+    - test_grep.stdout == "0"
+

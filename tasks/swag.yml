@@ -1,0 +1,17 @@
+- name: "Add {{ role_name }} subfolder to SWAG"
+  template:
+    src:  swag-template.conf
+    dest: "{{ swag_proxy_dir }}/{{ role_name }}.subfolder.conf"
+  when: subfolder is defined and subfolder
+
+- name: "Add {{ role_name }} subdomain to SWAG"
+  template:
+    src:  swag-template.conf
+    dest: "{{ swag_proxy_dir }}/{{ role_name }}.subdomain.conf"
+  when: (subfolder is not defined) or (subfolder is defined and not subfolder)
+
+- name: "Restart SWAG"
+  community.docker.docker_compose:
+    project_src: "{{ docker_basedir }}/swag"
+    build: no
+    restarted: yes

@@ -1,0 +1,27 @@
+---
+- name: Import Ubuntu specific tasks
+  import_tasks: ubuntu.yml
+  when: ansible_distribution == 'Ubuntu' 
+
+- name: Import Docker task in play
+  import_tasks: docker.yml
+  tags:
+    - docker
+
+- name: Import Pihole task in play
+  import_tasks: pihole.yml
+  when: add_to_pihole is defined and add_to_pihole
+  tags:
+    - pihole
+
+- name: Import Swag task in play
+  import_tasks: swag.yml
+  when: add_to_swag is defined and add_to_swag
+  tags:
+    - swag
+
+- name: Import SUI task in play
+  import_tasks: sui.yml
+  when: add_to_sui is defined and add_to_sui
+  tags:
+    - sui

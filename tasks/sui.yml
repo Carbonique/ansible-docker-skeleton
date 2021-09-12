@@ -1,0 +1,8 @@
+- name: Add {{ role_name }} to SUI apps.json
+  ansible.builtin.script: "add_to_sui.py {{ sui_apps.json }} {{ item.name }} {{ item.url }} {{ item.icon | default(default_app_icon) }}"
+  args:
+    executable: python3
+  register: output
+  ignore_errors: true
+  changed_when: "output.rc != 1"
+  with_items: "{{ app }}"

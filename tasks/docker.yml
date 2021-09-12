@@ -1,0 +1,21 @@
+- name: "Ensure {{ role_name }} Docker directory exists"
+  file:
+    path: "{{ docker_basedir }}/{{ role_name }}"
+    state: directory
+    mode: 0755
+    owner: "{{ ansible_user }}"
+    group: "{{ ansible_user }}"
+
+- name: "Render {{ role_name }} templates and copy to host"
+  template:
+    src: "{{ item }}"
+    dest: "{{ docker_basedir }}/{{ role_name }}/{{ item }}"
+    mode: 0400   
+    owner: "{{ ansible_user }}"
+    group: "{{ ansible_user }}"
+  with_items:
+      - docker-compose.yml
+
+- name: "Deploy {{ role_name }} Docker Compose "
+  docker_compose:
+    project_src: "{{ docker_basedir }}/{{ role_name }}"
