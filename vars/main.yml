@@ -1,5 +1,5 @@
 # Basedir to use for mounting 
-docker_basedir:
+docker_basedir: "{{ docker_encrypted_basedir }}"
 
 # SUI config
 app:

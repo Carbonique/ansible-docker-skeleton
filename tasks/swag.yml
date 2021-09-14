@@ -12,6 +12,6 @@
 
 - name: "Restart SWAG"
   community.docker.docker_compose:
-    project_src: "{{ docker_basedir }}/swag"
+    project_src: "{{ docker_encrypted_basedir }}/swag"
     build: no
     restarted: yes
