@@ -13,6 +13,7 @@ This role skeleton role can be used to deploy and remove Docker containers using
 
 1. Clone this repository or install using Ansible galaxy
 2. Create a new role using this role as skeleton: `ansible-galaxy init --role-skeleton=ansible-docker-skeleton NEW_ROLE` (both parameters relative to current directory)
+  alternatively you could use the `initRole.sh` script with the NEW_ROLE name as parameter: `initRole.sh NEW_ROLE`. The NEW_ROLE will be created in the parent directory of the `ansible-docker-skeleton` role
 
 # How to setup
 
