@@ -2,4 +2,4 @@ swag_proxy_dir: "{{ docker_encrypted_basedir }}/swag/nginx/proxy-confs"
 
 domain_name: "ritmeester.xyz" #The domain name under which web apps reside
 
-sui_apps.json: "{{ docker_encrypted_basedir }}/sui/apps.json" #The full path to the apps.json file used by SUI
+sui_apps_json: "{{ docker_encrypted_basedir }}/sui/app/apps.json" #The full path to the apps.json file used by SUI
